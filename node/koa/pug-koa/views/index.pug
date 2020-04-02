@@ -6,13 +6,15 @@ html(lang="en")
     title koa
   body
     h2.title hello 
+      //- 条件语句
       if user.name
         span= user.name
       else
         span world
 
-    //- 列表 
+    
     ul.list
       - 
+      //- 循环语句
       each item in list
         li= item.label
