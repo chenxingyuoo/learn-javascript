@@ -8,6 +8,7 @@
 <body>
   <h2 class="title">
     hello 
+    <!-- 条件语句 -->
     <% if (user) { %>
       <span><%= user.name %></span>
     <% } else { %>
@@ -16,6 +17,7 @@
   </h2>
 
   <ul class="list">
+    <!-- 循环语句 -->
     <% list.forEach((item) => { %>
       <li><%= item.label %></li>
     <% }) %> 
