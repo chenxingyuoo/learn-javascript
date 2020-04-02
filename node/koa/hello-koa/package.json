@@ -1,0 +1,15 @@
+{
+  "name": "hello-koa",
+  "version": "1.0.0",
+  "description": "Hello Koa 2 example",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "chenxingyu",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.11.0"
+  }
+}
