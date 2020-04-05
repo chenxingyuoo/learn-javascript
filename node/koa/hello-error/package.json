@@ -1,0 +1,24 @@
+{
+  "name": "hello-error",
+  "version": "1.0.0",
+  "description": "Url Koa 2 example",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "./node_modules/.bin/nodemon app.js",
+    "debug": "./node_modules/.bin/nodemon --inspect app.js"
+  },
+  "keywords": [],
+  "author": "chenxingyu",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^3.0.2",
+    "koa": "^2.11.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-onerror": "^4.1.0",
+    "koa-router": "^8.0.8",
+    "koa-views": "^6.2.1",
+    "mongoose": "^5.9.7",
+    "nodemon": "^2.0.2"
+  }
+}
