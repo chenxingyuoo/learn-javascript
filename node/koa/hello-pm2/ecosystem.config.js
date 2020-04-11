@@ -33,16 +33,19 @@ module.exports = {
       host : ['101.200.82.95'],            // ssh 地址
       ref  : 'origin/master',              // git 远程分支
       repo : 'git@github.com:chenxingyuoo/learn-javascript.git', // git 地址
-      path : '/home/project/hello-pm2',     //服务器文件路径
-      'post-deploy' : 'cd node/koa/hello-pm2 && npm install && pm2 startOrRestart ecosystem.config.js --env production'
+      path : '/home/project/hello-pm2',     // 服务器文件路径
+      'post-deploy' : 'cd node/koa/hello-pm2 && npm install && pm2 startOrRestart ecosystem.config.js --env production' // 在 deploy 后触发，执行远程脚本
     },
-    dev : {
+    development : {
       user : 'root',
       host : ['xxx'],
       ref  : 'origin/dev',
       repo : 'git@github.com:repo.git',
       path : '/var/www/development',
       'post-deploy' : 'npm install && pm2 startOrRestart ecosystem.config.js --env development'
+    },
+    test: {
+      //...
     }
   }
 }

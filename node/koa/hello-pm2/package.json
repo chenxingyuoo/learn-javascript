@@ -9,7 +9,10 @@
     "debug": "./node_modules/.bin/nodemon --inspect src/app.js",
     "prod-serve": "pm2 start ecosystem.config.js --env production",
     "dev-serve": "pm2 start ecosystem.config.js --env development",
-    "test-serve": "pm2 start ecosystem.config.js --env test"
+    "test-serve": "pm2 start ecosystem.config.js --env test",
+    "prod-deploy": "pm2 deploy production",
+    "dev-deploy": "pm2 deploy development",
+    "test-deploy": "pm2 deploy test"
   },
   "keywords": [],
   "author": "chenxingyu",
