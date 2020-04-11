@@ -7,9 +7,9 @@
     "start": "node src/app.js",
     "dev": "./node_modules/.bin/nodemon src/app.js",
     "debug": "./node_modules/.bin/nodemon --inspect src/app.js",
-    "prod-serve": "pm2 start ecosystem.config.js --env env_production",
-    "dev-serve": "pm2 start ecosystem.config.js --env env_development",
-    "test-serve": "pm2 start ecosystem.config.js --env env_test"
+    "prod-serve": "pm2 start ecosystem.config.js --env production",
+    "dev-serve": "pm2 start ecosystem.config.js --env development",
+    "test-serve": "pm2 start ecosystem.config.js --env test"
   },
   "keywords": [],
   "author": "chenxingyu",

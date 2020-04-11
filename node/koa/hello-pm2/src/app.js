@@ -8,6 +8,9 @@ const logger = require('./lib/logger')
 // 创建一个Koa对象表示web app本身:
 const app = new Koa()
 
+console.log('process.env.NODE_ENV', process.env.NODE_ENV)
+console.log('process.env.PORT', process.env.PORT)
+
 app.use(bodyParser())
 
 // 注册中间件，将render函数映射到ctx对象
