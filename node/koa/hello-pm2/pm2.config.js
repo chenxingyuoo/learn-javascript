@@ -35,7 +35,7 @@ module.exports = {
       ref  : 'origin/master',              // git 远程分支
       repo : 'git@github.com:chenxingyuoo/learn-javascript.git', // git 地址
       path : '/home/project/hello-pm2',     //服务器文件路径
-      'post-deploy' : 'cd node/koa/hello-pm2 && npm install && pm2 startOrRestart pm2.config --env env_production'
+      'post-deploy' : 'cd node/koa/hello-pm2 && npm install && pm2 startOrRestart pm2.config.js --env env_production'
     },
     dev : {
       user : 'root',
