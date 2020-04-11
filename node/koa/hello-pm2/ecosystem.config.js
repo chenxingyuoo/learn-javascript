@@ -31,7 +31,6 @@ module.exports = {
     production : {
       user : 'root',                       // ssh 用户
       host : ['101.200.82.95'],            // ssh 地址
-      ssh_options: 'StrictHostKeyChecking=no',
       ref  : 'origin/master',              // git 远程分支
       repo : 'git@github.com:chenxingyuoo/learn-javascript.git', // git 地址
       path : '/home/project/hello-pm2',     //服务器文件路径
@@ -40,13 +39,10 @@ module.exports = {
     dev : {
       user : 'root',
       host : ['xxx'],
-      ref  : 'origin/master',
+      ref  : 'origin/dev',
       repo : 'git@github.com:repo.git',
       path : '/var/www/development',
-      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env dev',
-      env  : {
-        NODE_ENV: 'dev'
-      }
+      'post-deploy' : 'npm install && pm2 startOrRestart ecosystem.config.js --env development'
     }
   }
 }
