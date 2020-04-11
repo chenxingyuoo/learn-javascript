@@ -30,7 +30,7 @@ module.exports = {
   deploy: {
     production : {
       user : 'root',                       // ssh 用户
-      host : ['101.200.82.95', '101.200.82.95'],            // ssh 地址
+      host : ['101.200.82.95'],            // ssh 地址
       ref  : 'origin/master',              // git 远程分支
       repo : 'git@github.com:chenxingyuoo/learn-javascript.git', // git 地址
       path : '/home/project/hello-pm2',     // 服务器文件路径
