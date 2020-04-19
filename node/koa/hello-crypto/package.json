@@ -1,0 +1,28 @@
+{
+  "name": "hello-jwt",
+  "version": "1.0.0",
+  "description": "Url Koa 2 example",
+  "main": "app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "./node_modules/.bin/nodemon src/app.js",
+    "debug": "./node_modules/.bin/nodemon --inspect src/app.js"
+  },
+  "keywords": [],
+  "author": "chenxingyu",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^3.0.2",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.11.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-onerror": "^4.1.0",
+    "koa-router": "^8.0.8",
+    "koa-static": "^5.0.0",
+    "koa-views": "^6.2.1",
+    "log4js": "^6.1.2",
+    "mongoose": "^5.9.7",
+    "nodemon": "^2.0.2",
+    "swagger-jsdoc": "^4.0.0"
+  }
+}
