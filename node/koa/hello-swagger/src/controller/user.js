@@ -25,7 +25,7 @@ const logger = require('../lib/logger')
  *            type: object
  *            required:
  *              - "name"
- *              - "password" 
+ *              - "password"
  *            properties:
  *              name:
  *                type: string
@@ -46,7 +46,7 @@ exports.register = async (ctx, next) => {
     password: body.password || '',
     createTime: new Date()
   })
-  
+
   // 保存数据
   const res = await user.save()
 
@@ -86,7 +86,7 @@ exports.info = async (ctx, next) => {
 
   const id = ctx.params.id
   const res = await UserModel.findById({ _id: id })
-    
+
   ctx.body = {
     code: 200,
     data: res,
@@ -94,13 +94,22 @@ exports.info = async (ctx, next) => {
   }
 }
 
-// 更新用户信息
+/**
+ * 更新用户信息
+ * @route POST /api/users/update
+ * @group user - Operations about user
+ * @param {string} id.query.required - 请输入用户名
+ * @param {number} password.query.required - 请输入密码
+ * @param {string} email.query.required - 请输入合法邮箱
+ * @returns {object} 200 - {code: 1, message: '请求成功', data: null}
+ * @returns {Error}  default - Unexpected error
+ */
 exports.update = async (ctx, next) => {
   logger.logHandle('更新用户信息:' + JSON.stringify(ctx.request.body))
 
   const body = ctx.request.body
   const res = await UserModel.findByIdAndUpdate({ _id: body.id }, body)
-  
+
   ctx.body = {
     code: 200,
     data: res,

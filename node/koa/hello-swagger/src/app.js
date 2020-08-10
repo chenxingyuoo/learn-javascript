@@ -1,3 +1,10 @@
+/*
+ * @Description: 服务入口
+ * @Date: 2020-04-16 12:50:02
+ * @Author: chenxingyu
+ * @LastEditors: chenxingyu
+ * @LastEditTime: 2020-08-10 18:56:28
+ */
 const Koa = require('koa')
 const views = require('koa-views')
 const bodyParser = require('koa-bodyparser')
@@ -9,13 +16,17 @@ const logger = require('./lib/logger')
 // 创建一个Koa对象表示web app本身:
 const app = new Koa()
 
+const expressSwagger = require('koa-swagger-generator')(app)
+
 app.use(bodyParser())
 app.use(require('koa-static')(__dirname + '/public'))
 
 // 注册中间件，将render函数映射到ctx对象
-app.use(views(__dirname + '/views', {
-  extension: 'ejs' // 文件后缀
-}))
+app.use(
+  views(__dirname + '/views', {
+    extension: 'ejs' // 文件后缀
+  })
+)
 
 // 请求日志中间件
 app.use(async (ctx, next) => {
@@ -25,16 +36,16 @@ app.use(async (ctx, next) => {
     await next()
     ms = new Date() - start
     // 记录响应日志
-    logger.logResponse(ctx, ms)	
+    logger.logResponse(ctx, ms)
   } catch (err) {
     ms = new Date() - start
     ctx.response.status = err.statusCode || err.status || 500
     ctx.response.body = {
-        message: err.message
+      message: err.message
     }
 
     // 记录响应日志
-    logger.logResponse(ctx, ms)	
+    logger.logResponse(ctx, ms)
 
     // 手动释放error事件
     ctx.app.emit('error', err, ctx, ms)
@@ -48,11 +59,36 @@ app.use(router.routes())
 app.use(userRouter.routes())
 app.use(swaggerRouter.routes())
 
+let options = {
+  swaggerDefinition: {
+    info: {
+      description: 'This is a sample server',
+      title: 'Swagger',
+      version: '1.0.0'
+    },
+    host: 'localhost:3000',
+    basePath: '/v1',
+    produces: ['application/json', 'application/xml'],
+    schemes: ['http', 'https'],
+    securityDefinitions: {
+      JWT: {
+        type: 'apiKey',
+        in: 'header',
+        name: 'Authorization',
+        description: ''
+      }
+    }
+  },
+  basedir: __dirname, //app absolute path
+  files: ['./controller/**/*.js'] //Path to the API handle folder
+}
+expressSwagger(options)
+
 // 监听错误
 app.on('error', async (err, ctx, ms) => {
   // 记录异常日志
-  logger.logError(ctx, err, ms) 
-  
+  logger.logError(ctx, err, ms)
+
   console.error('server error', err.message)
 })
 
